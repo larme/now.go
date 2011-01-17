@@ -5,7 +5,8 @@ import (
 )
 
 func Serve(http string) {
-    web.SetStaticDir(ResourceDir())
+    //web.SetStaticDir(ResourceDir())
+    web.Config.StaticDir = ResourceDir()
     web.Get("/now.json", jsonNext)
     web.Get("/now", htmlNext)
     web.Get("/later/", htmlLater)

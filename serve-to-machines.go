@@ -19,9 +19,7 @@ func jsonNext(ctx *web.Context) string {
 
 func jsonLater(ctx *web.Context) {
     if in, ok := ctx.Request.Params["thing"]; ok {
-        for _, thing := range in {
-            AddThing(thing)
-        }
+        AddThing(in)
         ctx.StartResponse(204)  // Success, no comment
     } else {
         ctx.StartResponse(500)  // Vague error message
@@ -45,7 +43,7 @@ func jsonPushNext(ctx *web.Context) string {
             return ""
         }
 
-        PushNext(thing[0])
+        PushNext(thing)
     }
     return jsonNext(ctx)
 }

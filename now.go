@@ -59,9 +59,8 @@ func writeList() {
 
     if !ok { return }
 
-    things := theList.Iter()
-    for thing := range things {
-        listFile.WriteString(fmt.Sprintf("%s\n", thing))
+    for thing:=theList.Front(); thing != nil; thing = thing.Next() {
+        listFile.WriteString(fmt.Sprintf("%s\n", thing.Value))
     }
 }
 
